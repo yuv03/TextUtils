@@ -12,7 +12,7 @@ import {
 
 function App() {
   const[mode, setMode] = useState('light');
-  const[inText, setInText] = useState('Enable dark mode');
+  // const[inText, setInText] = useState('Enable dark mode');
   const[alert, setAlert] =useState(null);
 
   const showAlert = (message, type)=>{
@@ -27,7 +27,7 @@ function App() {
   const toggleMode = ()=>{
     if(mode === 'light'){
       setMode('dark');
-      setInText('Enable light mode');
+      // setInText('Enable light mode');
       document.body.style.backgroundColor = "#102354";
       showAlert("Dark mode has been enabled", "success");
       document.title = "TextUtils Dark Mode";
@@ -46,7 +46,7 @@ function App() {
     }
     else {
       setMode('light');
-      setInText('Enable Dark Mode');
+      // setInText('Enable Dark Mode');
       document.body.style.backgroundColor = "white";
       showAlert("Light mode has been enabled", "success");
       document.title = "TextUtils Light Mode";
@@ -55,12 +55,12 @@ function App() {
 
   return (
     <Router>
-    <Navbar title = "TextUtils" mode={mode} toggleMode = {toggleMode} inText={inText} />
+    <Navbar title = "TextUtils" mode={mode} toggleMode = {toggleMode}  />
     <Alert alert = {alert}/>
     <div className="container my-3">
     
     <Routes>
-          <Route exact path="/about" element={<About />}>  
+          <Route exact path="/about" element={<About mode={mode} />}>  
           </Route>
           <Route exact path="/" element={<TextForm heading = "Enter the text to analyze below" mode={mode} showAlert={showAlert} />}>            
           </Route>
